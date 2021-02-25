@@ -13,7 +13,7 @@ describe('test/app/controller/home.test.js', () => {
 
   it('should GET /', () => {
     return app.httpRequest()
-      .post('/')
+      .post('/getUser')
         .send({"name":"cpf"})
       .expect(200);
   });

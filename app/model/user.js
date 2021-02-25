@@ -1,13 +1,18 @@
 'use strict'
 
-let Schema = require("mongoose").Schema;
+module.exports = app => {
+    const mongoose = app.mongoose;
+    const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-        name: {type: String},
-        pwd: {type: String},
-        age: {type: Number}
-    }
-)
+    const UserSchema = new Schema({
+            name: {type: String},
+            org_no: {type: String},
+            age: {type: Number}
+        },{collection:"user"}
+    )
+    return mongoose.model('User', UserSchema);
+}
+
 
 /*UserSchema.pre('',function (next) {
 

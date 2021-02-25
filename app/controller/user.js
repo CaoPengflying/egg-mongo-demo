@@ -9,7 +9,7 @@ class User extends Controller {
         }
         ctx.validate(userCreateRule);
         // 调用 Service 进行业务处理
-        const res = await service.post.create(req.body);
+        const res = await service.user.create(req.body);
         // 设置响应内容和响应状态码
         ctx.body = {id: res.id};
         ctx.status = 200;
@@ -18,9 +18,9 @@ class User extends Controller {
     async get() {
         const {ctx, service} = this;
         // 调用 Service 进行业务处理
-        const res = await service.post.get(req.body.name);
+        const res = await service.user.getUserByName(ctx.query.name);
         // 设置响应内容和响应状态码
-        ctx.body = {id: res.id, name: res.name, pwd: res.pwd};
+        ctx.body = res;
         ctx.status = 200;
     }
 

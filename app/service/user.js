@@ -2,14 +2,15 @@ const Service = require("egg").Service;
 
 
 class UserService extends Service {
-    async create() {
 
-    }
-
-    async get(name) {
+    async getUserByName(name) {
         const query = {
             name: name
         }
-        return this.ctx.model.User.find(query).exec()
+        const user = this.ctx.model.User.findOne(query).exec()
+        console.log(user)
+        return user
     }
 }
+
+module.exports = UserService
