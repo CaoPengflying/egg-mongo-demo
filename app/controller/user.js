@@ -2,16 +2,8 @@ const Controller = require("egg").Controller
 
 class User extends Controller {
     async create() {
-        const {ctx, service} = this;
-        const userCreateRule = {
-            userName: {type: 'string'},
-            pwd: {type: 'string'}
-        }
-        ctx.validate(userCreateRule);
-        // 调用 Service 进行业务处理
-        const res = await service.user.create(req.body);
-        // 设置响应内容和响应状态码
-        ctx.body = {id: res.id};
+        const {ctx} = this;
+        ctx.body = "create success";
         ctx.status = 200;
     }
 
